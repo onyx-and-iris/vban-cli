@@ -1,0 +1,27 @@
+[project]
+name = "vmr-cli"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+license = { text = "LICENSE" }
+requires-python = ">=3.13"
+dependencies = ["cyclopts>=4.6.0", "vban-cmd>=2.5.2"]
+classifiers = [
+    "Development Status :: 4 - Alpha",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
+
+[project.scripts]
+vmr-cli = "vmr_cli.app:run"
+
+[tool.uv]
+package = true
+
+[tool.uv.sources]
+vban-cmd = { path = "../vban-cmd-python" }
