@@ -10,7 +10,7 @@ from .context import Context
 
 app = App(
     config=config.Env(
-        'VMR_CLI_',
+        'VBAN_CLI_',
     ),  # Environment variable prefix for configuration parameters
     version=version,
 )
