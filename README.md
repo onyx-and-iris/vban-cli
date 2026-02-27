@@ -72,6 +72,7 @@ For every command and subcommand there exists a `--help` flag for further usage 
 
 1. The VBAN TEXT subprotocol defines two packet structures [ident:0][ident-0] and [ident:1][ident-1]. Neither of them contain the data for Bus EQ parameters.
 2. Packet structure with [ident:1][ident-1] is emitted by the VBAN server only on pdirty events. This means we do not receive the initial state of those parameters on initial subscription. Therefore any commands which are intended to fetch the value of parameters defined in packet [ident:1][ident-1] will not work in this CLI.
+3. Packet structure with [ident:1][ident-1] defines parameteric EQ data only for the [first channel][ident-1-peq].
 
 
 ---
@@ -84,3 +85,4 @@ For every command and subcommand there exists a `--help` flag for further usage 
 
 [ident-0]: https://github.com/onyx-and-iris/Voicemeeter-SDK/blob/3be2c1c36563afbd6df3da8436406c77d2cc1f10/VoicemeeterRemote.h#L896
 [ident-1]: https://github.com/onyx-and-iris/Voicemeeter-SDK/blob/3be2c1c36563afbd6df3da8436406c77d2cc1f10/VoicemeeterRemote.h#L982
+[ident-1-peq]: https://github.com/onyx-and-iris/Voicemeeter-SDK/blob/3be2c1c36563afbd6df3da8436406c77d2cc1f10/VoicemeeterRemote.h#L995
