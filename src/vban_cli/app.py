@@ -16,6 +16,7 @@ app = App(
 )
 app.command(strip.app.meta, name='strip')
 app.command(bus.app.meta, name='bus')
+app.register_install_completion_command()
 
 
 @Parameter(name='*')
