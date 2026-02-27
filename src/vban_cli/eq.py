@@ -5,28 +5,30 @@ from cyclopts import App, Argument, Parameter
 from .context import Context
 from .help import CustomHelpFormatter
 
+cell_app = App(name='cell', help_formatter=CustomHelpFormatter())
+
 app = App(name='eq', help_formatter=CustomHelpFormatter())
+app.command(cell_app.meta, name='cell')
 
 
 @app.meta.default
 def launcher(
-    band: Annotated[int, Argument()] = None,
     *tokens: Annotated[str, Parameter(show=False, allow_leading_hyphen=True)],
+    eq_kind: Annotated[str, Parameter(show=False)] = None,
     index: Annotated[int, Argument()] = None,
     ctx: Annotated[Context, Parameter(show=False)] = None,
 ):
-    """Control the EQ parameters.
-
-    Only channel 0 is supported, see https://github.com/onyx-and-iris/vban-cli?tab=readme-ov-file#implementation-notes - 3.
-    """
+    """Control the EQ parameters."""
     additional_kwargs = {}
     command, bound, _ = app.parse_args(tokens)
-    if index is not None:
-        additional_kwargs['index'] = index
-    if band is not None:
-        additional_kwargs['band'] = band
-    if ctx is not None:
-        additional_kwargs['ctx'] = ctx
+    match eq_kind:
+        case 'strip':
+            target = ctx.client.strip[index].eq
+        case 'bus':
+            target = ctx.client.bus[index].eq
+        case _:
+            raise ValueError(f'Invalid eq_kind: {eq_kind}')
+    additional_kwargs['target'] = target
 
     return command(*bound.args, **bound.kwargs, **additional_kwargs)
 
@@ -35,9 +37,7 @@ def launcher(
 def on(
     new_state: Annotated[bool, Argument()] = None,
     *,
-    index: Annotated[int, Parameter(show=False)] = None,
-    band: Annotated[int, Parameter(show=False)] = None,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    target: Annotated[object, Parameter(show=False)] = None,
 ):
     """Get or set the on state of the specified EQ band.
 
@@ -48,6 +48,43 @@ def on(
     """
     if new_state is None:
         # See https://github.com/onyx-and-iris/vban-cli?tab=readme-ov-file#implementation-notes - 2.
-        # console.out.print(ctx.client.strip[index].eq.channel[0].cell[band].on)
+        # console.out.print(target.on)
         return
-    ctx.client.strip[index].eq.channel[0].cell[band].on = new_state
+    target.on = new_state
+
+
+@cell_app.meta.default
+def cell_launcher(
+    band: Annotated[int, Argument()] = None,
+    *tokens: Annotated[str, Parameter(show=False, allow_leading_hyphen=True)],
+    target: Annotated[object, Parameter(show=False)] = None,
+):
+    """Control the EQ Cell parameters.
+
+    Only channel 0 is supported, see https://github.com/onyx-and-iris/vban-cli?tab=readme-ov-file#implementation-notes - 3.
+    """
+    additional_kwargs = {}
+    command, bound, _ = app.parse_args(tokens)
+    additional_kwargs['target'] = target.channel[0].cell[band]
+
+    return command(*bound.args, **bound.kwargs, **additional_kwargs)
+
+
+@cell_app.command(name='on')
+def cell_on(
+    new_state: Annotated[bool, Argument()] = None,
+    *,
+    target: Annotated[object, Parameter(show=False)] = None,
+):
+    """Get or set the on state of the specified EQ cell.
+
+    Parameters
+    ----------
+    new_state : bool
+        If provided, sets the on state to this value. If not provided, the current on state is printed.
+    """
+    if new_state is None:
+        # See https://github.com/onyx-and-iris/vban-cli?tab=readme-ov-file#implementation-notes - 2.
+        # console.out.print(target.on)
+        return
+    target.on = new_state

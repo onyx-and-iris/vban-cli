@@ -20,6 +20,8 @@ def launcher(
     """Control the bus parameters."""
     additional_kwargs = {}
     command, bound, _ = app.parse_args(tokens)
+    if tokens[0] == 'eq':
+        additional_kwargs['eq_kind'] = app.name[0]
     if index is not None:
         additional_kwargs['index'] = index
     if ctx is not None:
