@@ -2,11 +2,12 @@ from typing import Annotated, Optional
 
 from cyclopts import App, Argument, Parameter
 
-from . import console
+from . import console, eq
 from .context import Context
 from .help import CustomHelpFormatter
 
 app = App(name='strip', help_formatter=CustomHelpFormatter())
+app.command(eq.app.meta, name='eq')
 
 
 @app.meta.default
