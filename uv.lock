@@ -101,15 +101,7 @@ wheels = [
 ]
 
 [[package]]
-name = "vban-cmd"
-version = "2.5.2"
-source = { directory = "../vban-cmd-python" }
-
-[package.metadata]
-requires-dist = [{ name = "tomli", marker = "python_full_version < '3.11'", specifier = ">=2.0.1,<3.0" }]
-
-[[package]]
-name = "vmr-cli"
+name = "vban-cli"
 version = "0.2.0"
 source = { editable = "." }
 dependencies = [
@@ -122,3 +114,11 @@ requires-dist = [
     { name = "cyclopts", specifier = ">=4.6.0" },
     { name = "vban-cmd", directory = "../vban-cmd-python" },
 ]
+
+[[package]]
+name = "vban-cmd"
+version = "2.5.2"
+source = { directory = "../vban-cmd-python" }
+
+[package.metadata]
+requires-dist = [{ name = "tomli", marker = "python_full_version < '3.11'", specifier = ">=2.0.1,<3.0" }]

@@ -1,4 +1,4 @@
-# vmr-cli
+# vban-cli
 
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
@@ -10,16 +10,16 @@
 #### With uv
 
 ```console
-uv tool install vmr-cli
+uv tool install vban-cli
 ```
 
 #### With pipx
 
 ```console
-pipx install vmr-cli
+pipx install vban-cli
 ```
 
-The CLI should now be discoverable as `vmr-cli`
+The CLI should now be discoverable as `vban-cli`
 
 ---
 
@@ -28,7 +28,7 @@ The CLI should now be discoverable as `vmr-cli`
 ### Flags
 
 ```console
-vmr-cli --host=localhost --port=6980 --streamname=Command1
+vban-cli --host=localhost --port=6980 --streamname=Command1
 ```
 
 ### Environment Variables
@@ -53,4 +53,4 @@ export VMR_CLI_STREAMNAME=Command1
 
 ## License
 
-`vmr-cli` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
+`vban-cli` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
