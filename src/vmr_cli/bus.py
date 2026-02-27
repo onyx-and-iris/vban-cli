@@ -1,0 +1,104 @@
+from typing import Annotated, Literal, Optional
+
+from cyclopts import App, Argument, Parameter
+
+from . import console
+from .context import Context
+from .help import CustomHelpFormatter
+
+app = App(name='bus', help_formatter=CustomHelpFormatter())
+
+
+@app.meta.default
+def launcher(
+    index: Annotated[int, Argument()] = None,
+    *tokens: Annotated[str, Parameter(show=False, allow_leading_hyphen=True)],
+    ctx: Annotated[Context, Parameter(show=False)] = None,
+):
+    """Control the bus parameters."""
+    additional_kwargs = {}
+    command, bound, _ = app.parse_args(tokens)
+    if index is not None:
+        additional_kwargs['index'] = index
+    if ctx is not None:
+        additional_kwargs['ctx'] = ctx
+
+    return command(*bound.args, **bound.kwargs, **additional_kwargs)
+
+
+@app.command(name='mono')
+def mono(
+    new_value: Annotated[Optional[bool], Argument()] = None,
+    *,
+    index: Annotated[int, Parameter(show=False)] = None,
+    ctx: Annotated[Context, Parameter(show=False)] = None,
+):
+    """Get or set the mono state of the specified bus.
+
+    Parameters
+    ----------
+    new_value : bool, optional
+        If provided, sets the mono state to this value. If not provided, the current mono state is printed.
+    """
+    if new_value is None:
+        console.out.print(ctx.client.bus[index].mono)
+        return
+    ctx.client.bus[index].mono = new_value
+
+
+@app.command(name='mute')
+def mute(
+    new_value: Annotated[Optional[bool], Argument()] = None,
+    *,
+    index: Annotated[int, Parameter(show=False)] = None,
+    ctx: Annotated[Context, Parameter(show=False)] = None,
+):
+    """Get or set the mute state of the specified bus.
+
+    Parameters
+    ----------
+    new_value : bool, optional
+        If provided, sets the mute state to this value. If not provided, the current mute state is printed.
+    """
+    if new_value is None:
+        console.out.print(ctx.client.bus[index].mute)
+        return
+    ctx.client.bus[index].mute = new_value
+
+
+@app.command(name='mode')
+def mode(
+    type_: Annotated[
+        Optional[
+            Literal[
+                'normal',
+                'amix',
+                'bmix',
+                'repeat',
+                'composite',
+                'tvmix',
+                'upmix21',
+                'upmix41',
+                'upmix61',
+                'centeronly',
+                'lfeonly',
+                'rearonly',
+            ]
+        ],
+        Argument(),
+    ] = None,
+    *,
+    index: Annotated[int, Parameter(show=False)] = None,
+    ctx: Annotated[Context, Parameter(show=False)] = None,
+):
+    """Get or set the bus mode of the specified bus.
+
+    Parameters
+    ----------
+    type_ : str, optional
+        If provided, sets the bus mode to this value. If not provided, the current bus mode is printed.
+    """
+    if type_ is None:
+        console.out.print(ctx.client.bus[index].mode.get())
+        return
+    setattr(ctx.client.bus[index].mode, type_, True)

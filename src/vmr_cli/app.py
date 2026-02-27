@@ -5,7 +5,7 @@ import vban_cmd
 from cyclopts import App, Parameter, config
 
 from . import __version__ as version
-from . import console, strip
+from . import bus, console, strip
 from .context import Context
 
 app = App(
@@ -15,6 +15,7 @@ app = App(
     version=version,
 )
 app.command(strip.app.meta, name='strip')
+app.command(bus.app.meta, name='bus')
 
 
 @Parameter(name='*')
