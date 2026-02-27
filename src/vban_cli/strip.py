@@ -2,12 +2,15 @@ from typing import Annotated, Optional
 
 from cyclopts import App, Argument, Parameter
 
-from . import console, eq
+from . import comp, console, denoiser, eq, gate
 from .context import Context
 from .help import CustomHelpFormatter
 
 app = App(name='strip', help_formatter=CustomHelpFormatter())
 app.command(eq.app.meta, name='eq')
+app.command(comp.app.meta, name='comp')
+app.command(gate.app.meta, name='gate')
+app.command(denoiser.app.meta, name='denoiser')
 
 
 @app.meta.default
