@@ -5,7 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 license = { text = "LICENSE" }
 requires-python = ">=3.13"
-dependencies = ["cyclopts>=4.6.0", "vban-cmd>=2.5.2"]
+dependencies = ["cyclopts>=4.6.0", "vban-cmd>=2.6.0"]
 classifiers = [
     "Development Status :: 4 - Alpha",
     "Programming Language :: Python",

@@ -117,7 +117,7 @@ requires-dist = [
 
 [[package]]
 name = "vban-cmd"
-version = "2.5.2"
+version = "2.6.0"
 source = { directory = "../vban-cmd-python" }
 
 [package.metadata]
