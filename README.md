@@ -38,9 +38,9 @@ example .envrc:
 ```env
 #!/usr/bin/env bash
 
-export VMR_CLI_HOST="localhost"
-export VMR_CLI_PORT=6980
-export VMR_CLI_STREAMNAME=Command1
+export VBAN_CLI_HOST="localhost"
+export VBAN_CLI_PORT=6980
+export VBAN_CLI_STREAMNAME=Command1
 ```
 
 ---
