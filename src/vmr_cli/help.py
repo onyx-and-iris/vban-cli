@@ -15,7 +15,7 @@ class CustomHelpFormatter(DefaultFormatter):
         """Render the usage line with index argument injected."""
         if usage:
             modified_usage = re.sub(
-                r'(\S+\s+strip)\s+(COMMAND)', r'\1 <index> \2', str(usage)
+                r'(\S+\s+[a-z]+)\s+(COMMAND)', r'\1 <index> \2', str(usage)
             )
             console.print(f'[bold]Usage:[/bold] {modified_usage}')
 
