@@ -7,7 +7,7 @@ license = { text = "LICENSE" }
 requires-python = ">=3.13"
 dependencies = ["cyclopts>=4.6.0", "vban-cmd>=2.6.0"]
 classifiers = [
-    "Development Status :: 4 - Alpha",
+    "Development Status :: 3 - Alpha",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
