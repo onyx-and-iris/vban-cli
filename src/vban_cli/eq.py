@@ -17,7 +17,7 @@ def launcher(
 ):
     """Control the EQ parameters.
 
-    Only channel 0 is supported, as the VBAN protocol only exposes parameters for this channel.
+    Only channel 0 is supported, see https://github.com/onyx-and-iris/vban-cli?tab=readme-ov-file#implementation-notes - 3.
     """
     additional_kwargs = {}
     command, bound, _ = app.parse_args(tokens)
