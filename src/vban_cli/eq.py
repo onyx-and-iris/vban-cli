@@ -47,7 +47,7 @@ def on(
         If provided, sets the on state to this value. If not provided, the current on state is printed.
     """
     if new_state is None:
-        # This doesn't work because the VBAN protocol doesn't send an initial NBS1 packet.
+        # See https://github.com/onyx-and-iris/vban-cli?tab=readme-ov-file#implementation-notes - 2.
         # console.out.print(ctx.client.strip[index].eq.channel[0].cell[band].on)
         return
     ctx.client.strip[index].eq.channel[0].cell[band].on = new_state

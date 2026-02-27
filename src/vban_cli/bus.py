@@ -7,8 +7,7 @@ from .context import Context
 from .help import CustomHelpFormatter
 
 app = App(name='bus', help_formatter=CustomHelpFormatter())
-# The VBAN protocl does not yet define a packet structure for these bus parameters.
-# Hopefully that will come in the form of a 'VBAN_VMPARAMBUS_PACKET'.
+# See https://github.com/onyx-and-iris/vban-cli?tab=readme-ov-file#implementation-notes - 1.
 # app.command(eq.app.meta, name='eq')
 
 
