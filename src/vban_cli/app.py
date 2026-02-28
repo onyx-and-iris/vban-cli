@@ -33,17 +33,17 @@ def launcher(
     *tokens: Annotated[str, Parameter(show=False, allow_leading_hyphen=True)],
     vban_config: Annotated[VBANConfig, Parameter()] = VBANConfig(),
 ):
+    command, bound, _ = app.parse_args(tokens)
+    if tokens[0] == '--install-completion':
+        return command(*bound.args, **bound.kwargs)
+
     with vban_cmd.api(
         vban_config.kind,
         ip=vban_config.host,
         port=vban_config.port,
         streamname=vban_config.streamname,
     ) as client:
-        additional_kwargs = {}
-        command, bound, _ = app.parse_args(tokens)
-        additional_kwargs['ctx'] = Context(client=client)
-
-        return command(*bound.args, **bound.kwargs, **additional_kwargs)
+        return command(*bound.args, **bound.kwargs, ctx=Context(client=client))
 
 
 def run():
