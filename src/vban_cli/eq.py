@@ -3,11 +3,11 @@ from typing import Annotated
 from cyclopts import App, Argument, Parameter
 
 from .context import Context
-from .help import CustomHelpFormatter
+from .help import CellHelpFormatter, EqHelpFormatter
 
-cell_app = App(name='cell', help_formatter=CustomHelpFormatter())
+cell_app = App(name='cell', help_formatter=CellHelpFormatter())
 
-app = App(name='eq', help_formatter=CustomHelpFormatter())
+app = App(name='eq', help_formatter=EqHelpFormatter())
 app.command(cell_app.meta, name='cell')
 
 

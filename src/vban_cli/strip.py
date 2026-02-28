@@ -4,9 +4,9 @@ from cyclopts import App, Argument, Parameter
 
 from . import comp, console, denoiser, eq, gate
 from .context import Context
-from .help import CustomHelpFormatter
+from .help import StripHelpFormatter
 
-app = App(name='strip', help_formatter=CustomHelpFormatter())
+app = App(name='strip', help_formatter=StripHelpFormatter())
 app.command(eq.app.meta, name='eq')
 app.command(comp.app.meta, name='comp')
 app.command(gate.app.meta, name='gate')

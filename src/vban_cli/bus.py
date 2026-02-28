@@ -4,9 +4,9 @@ from cyclopts import App, Argument, Parameter
 
 from . import console
 from .context import Context
-from .help import CustomHelpFormatter
+from .help import BusHelpFormatter
 
-app = App(name='bus', help_formatter=CustomHelpFormatter())
+app = App(name='bus', help_formatter=BusHelpFormatter())
 # See https://github.com/onyx-and-iris/vban-cli?tab=readme-ov-file#implementation-notes - 1.
 # app.command(eq.app.meta, name='eq')
 
