@@ -5,6 +5,8 @@
 
 ---
 
+This CLI is still in an early stage of development with many more things that could be implemented. However, the commands that are implemented should be working without issues.
+
 ## Install
 
 #### With uv
@@ -47,24 +49,35 @@ export VBAN_CLI_STREAMNAME=Command1
 
 ## Use
 
-```console
-Usage: vban-cli COMMAND
+### Strip Command
 
-╭─ Commands ───────────────────────────────────────────────────────────────────────────────────────╮
-│ bus          Control the bus parameters.                                                         │
-│ strip        Control the strip parameters.                                                       │
-│ --help (-h)  Display this message and exit.                                                      │
-│ --version    Display application version.                                                        │
-╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ Parameters ─────────────────────────────────────────────────────────────────────────────────────╮
-│ --kind        Kind of Voicemeeter [env var: VBAN_CLI_KIND] [default: potato]                     │
-│ --host        VBAN host [env var: VBAN_CLI_HOST] [default: localhost]                            │
-│ --port        VBAN port [env var: VBAN_CLI_PORT] [default: 6980]                                 │
-│ --streamname  VBAN stream name [env var: VBAN_CLI_STREAMNAME] [default: Command1]                │
-╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
+Usage: vban-cli strip <index> COMMAND [ARGS]
+
+examples:
+
+```console
+vban-cli strip 0 mute true
+
+vban-cli strip 1 A1 true
+
+vban-cli strip 2 gain -18.7
 ```
 
-For every command and subcommand there exists a `--help` flag for further usage information.
+see `vban-cli strip --help` for more info.
+
+### Bus Command
+
+Usage: vban-cli bus <index> COMMAND [ARGS]
+
+examples:
+
+```console
+vban-cli bus mode normal
+
+vban-cli bus mute true
+```
+
+see `vban-cli bus --help` for more info.
 
 ---
 
