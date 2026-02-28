@@ -51,7 +51,7 @@ export VBAN_CLI_STREAMNAME=Command1
 
 ### Strip Command
 
-Usage: vban-cli strip <index> COMMAND [ARGS]
+Usage: vban-cli strip \<index> COMMAND [ARGS]
 
 examples:
 
@@ -67,7 +67,7 @@ see `vban-cli strip --help` for more info.
 
 ### Bus Command
 
-Usage: vban-cli bus <index> COMMAND [ARGS]
+Usage: vban-cli bus \<index> COMMAND [ARGS]
 
 examples:
 
