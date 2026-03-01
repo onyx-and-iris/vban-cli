@@ -93,9 +93,7 @@ see `vban-cli bus --help` for more info.
 
 I've made the effort to set up the basic skeletal structure of the CLI as well as demonstrate how to combine subcommand groups with subcommand groups so more can be implemented, it just needs doing. There may be restrictions on some things however, for example, retrieving values is only possible for parameters [defined in the protocol](https://github.com/onyx-and-iris/Voicemeeter-SDK/blob/3be2c1c36563afbd6df3da8436406c77d2cc1f10/VoicemeeterRemote.h#L787). Setting parameters can be done for anything possible by a string request.
 
-Shell completion scripts are available (for zsh, bash and fish) but I haven't tested them
-
-Some of the help output needs improving for commands that branch off positional arguments.
+Shell completion scripts are available (for zsh, bash and fish) but they haven't been thoroughly tested.
 
 If there's something missing that you would like to see added the best bet is to submit a PR. You may raise an issue and if it's quick and simple to do I may (or may not) do it.
 
