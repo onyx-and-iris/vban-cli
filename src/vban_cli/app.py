@@ -5,7 +5,7 @@ import vban_cmd
 from cyclopts import App, Argument, Parameter, config
 
 from . import __version__ as version
-from . import bus, command, console, strip
+from . import bus, command, console, recorder, strip
 from .context import Context
 
 app = App(
@@ -17,6 +17,7 @@ app = App(
 app.command(strip.app.meta, name='strip')
 app.command(bus.app.meta, name='bus')
 app.command(command.app, name='command')
+app.command(recorder.app, name='recorder')
 app.register_install_completion_command()
 
 
