@@ -130,7 +130,7 @@ see `vban-cli sendtext --help` for more info.
 ## Implementation Notes
 
 1. The VBAN TEXT subprotocol defines two packet structures [ident:0][ident-0] and [ident:1][ident-1]. Neither of them contain the data for Bus EQ parameters.
-2. Packet structure with [ident:1][ident-1] is emitted by the VBAN server only on pdirty events. This means we do not receive the initial state of those parameters on initial subscription. Therefore any commands which are intended to fetch the value of parameters defined in packet [ident:1][ident-1] will not work in this CLI.
+2. Packet structure with [ident:1][ident-1] is emitted by the VBAN server only on pdirty events. This means we do not receive the current state of those parameters on initial subscription. Therefore any commands which are intended to fetch the value of parameters defined in packet [ident:1][ident-1] will not work in this CLI.
 3. Packet structure with [ident:1][ident-1] defines parameteric EQ data only for the [first channel][ident-1-peq].
 
 ---
