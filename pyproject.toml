@@ -1,6 +1,6 @@
 [project]
 name = "vban-cli"
-version = "0.5.0"
+version = "0.6.0"
 description = "A command-line interface for Voicemeeter leveraging VBAN."
 readme = "README.md"
 license = { text = "LICENSE" }
