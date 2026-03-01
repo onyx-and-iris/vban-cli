@@ -65,6 +65,30 @@ vban-cli strip 2 gain -18.7
 
 see `vban-cli strip --help` for more info.
 
+#### Strip EQ
+
+Usage: vban-cli strip \<index> eq COMMAND [OPTIONS]
+
+examples:
+
+```console
+vban-cli strip 0 eq on true
+```
+
+see `vban-cli strip eq --help` for more info.
+
+#### Strip EQ Cell Command
+
+Usage: vban-cli strip \<index> eq cell \<band> COMMAND [ARGS]
+
+examples:
+
+```console
+vban-cli strip 0 eq cell 0 on false
+```
+
+see `vban-cli strip eq cell --help` for more info.
+
 ### Bus Command
 
 Usage: vban-cli bus \<index> COMMAND [ARGS]
@@ -72,9 +96,9 @@ Usage: vban-cli bus \<index> COMMAND [ARGS]
 examples:
 
 ```console
-vban-cli bus mode normal
+vban-cli bus 0 mode tvmix
 
-vban-cli bus mute true
+vban-cli bus 1 mute true
 ```
 
 see `vban-cli bus --help` for more info.
