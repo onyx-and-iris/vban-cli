@@ -32,7 +32,9 @@ def launcher(
 
 @app.command(name='mono')
 def mono(
-    new_value: Annotated[Optional[bool], Argument()] = None,
+    new_value: Annotated[
+        Optional[Literal['off', 'mono', 'stereoreverse']], Argument()
+    ] = None,
     *,
     index: Annotated[int, Parameter(show=False)] = None,
     ctx: Annotated[Context, Parameter(show=False)] = None,
@@ -41,13 +43,13 @@ def mono(
 
     Parameters
     ----------
-    new_value : bool, optional
+    new_value : {'off', 'mono', 'stereoreverse'}, optional
         If provided, sets the mono state to this value. If not provided, the current mono state is printed.
     """
     if new_value is None:
-        console.out.print(ctx.client.bus[index].mono)
+        console.out.print(['off', 'mono', 'stereoreverse'][ctx.client.bus[index].mono])
         return
-    ctx.client.bus[index].mono = new_value
+    ctx.client.bus[index].mono = ['off', 'mono', 'stereoreverse'].index(new_value)
 
 
 @app.command(name='mute')
