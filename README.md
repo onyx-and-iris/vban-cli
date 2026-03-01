@@ -103,6 +103,20 @@ vban-cli bus 1 mute true
 
 see `vban-cli bus --help` for more info.
 
+### Command Command
+
+Usage: vban-cli command COMMAND
+
+examples:
+
+```console
+vban-cli command show
+
+vban-cli command restart
+```
+
+see `vban-cli command --help` for more info.
+
 ### Sendtext Command
 
 Usage: vban-cli sendtext TEXT
