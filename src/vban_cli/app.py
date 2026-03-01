@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import Annotated
 
 import vban_cmd
-from cyclopts import App, Parameter, config
+from cyclopts import App, Argument, Parameter, config
 
 from . import __version__ as version
 from . import bus, console, strip
@@ -37,13 +37,30 @@ def launcher(
     if tokens[0] == '--install-completion':
         return command(*bound.args, **bound.kwargs)
 
+    disable_rt_listeners = False
+    if command.__name__ == 'sendtext':
+        disable_rt_listeners = True
+
     with vban_cmd.api(
         vban_config.kind,
         ip=vban_config.host,
         port=vban_config.port,
         streamname=vban_config.streamname,
+        disable_rt_listeners=disable_rt_listeners,
     ) as client:
         return command(*bound.args, **bound.kwargs, ctx=Context(client=client))
+
+
+@app.command(name='sendtext')
+def sendtext(
+    text: Annotated[str, Argument()],
+    /,
+    *,
+    ctx: Annotated[Context, Parameter(show=False)] = None,
+):
+    """Send a text command to the current Voicemeeter/Matrix instance."""
+    if resp := ctx.client.sendtext(text):
+        console.out.print(resp)
 
 
 def run():
