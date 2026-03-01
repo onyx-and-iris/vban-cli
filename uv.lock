@@ -124,7 +124,7 @@ wheels = [
 
 [[package]]
 name = "vban-cli"
-version = "0.6.0"
+version = "0.7.0"
 source = { editable = "." }
 dependencies = [
     { name = "cyclopts" },
@@ -141,7 +141,7 @@ requires-dist = [
 
 [[package]]
 name = "vban-cmd"
-version = "2.7.1"
+version = "2.8.0"
 source = { editable = "../vban-cmd-python" }
 
 [package.metadata]
