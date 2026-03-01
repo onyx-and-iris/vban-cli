@@ -3,9 +3,9 @@ from typing import Annotated
 from cyclopts import App, Argument, Parameter
 
 from .context import Context
-from .help import StripSubcommandHelpFormatter
+from .help import StripHelpFormatter
 
-app = App(name='denoiser', help_formatter=StripSubcommandHelpFormatter())
+app = App(name='denoiser', help_formatter=StripHelpFormatter())
 
 
 @app.meta.default

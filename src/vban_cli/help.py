@@ -61,18 +61,6 @@ class StripHelpFormatter(BaseHelpFormatter):
             console.print(f'[bold]Usage:[/bold] {modified_usage}')
 
 
-class StripSubcommandHelpFormatter(BaseHelpFormatter):
-    """Help formatter for strip subcommands that injects <index> after 'strip'."""
-
-    def render_usage(self, console: Console, options: ConsoleOptions, usage) -> None:
-        """Render the usage line with index argument injected after 'strip'."""
-        if usage:
-            modified_usage = re.sub(
-                r'(\S+\s+strip)\s+(\w+)\s+(COMMAND)', r'\1 <index> \2 \3', str(usage)
-            )
-            console.print(f'[bold]Usage:[/bold] {modified_usage}')
-
-
 class BusHelpFormatter(BaseHelpFormatter):
     """Help formatter for bus commands that injects <index> after 'bus'."""
 
