@@ -103,8 +103,6 @@ vban-cli bus 1 mute true
 
 see `vban-cli bus --help` for more info.
 
----
-
 ### Sendtext Command
 
 Usage: vban-cli sendtext TEXT
@@ -126,6 +124,8 @@ vban-cli sendtext 'Point(ASIO128.IN[1..4],ASIO128.OUT[1]).dBGain = -3.0'
 ```
 
 see `vban-cli sendtext --help` for more info.
+
+---
 
 ## Implementation Notes
 
