@@ -105,6 +105,26 @@ see `vban-cli bus --help` for more info.
 
 ---
 
+### Sendtext Command
+
+Usage: vban-cli sendtext TEXT
+
+*To Voicemeeter*
+
+examples:
+
+```console
+vban-cli sendtext 'Strip[0].Mute=1;Bus[0].Mono=2'
+```
+
+*To Matrix*
+
+```console
+vban-cli sendtext 'Command.Version = ?'
+
+vban-cli sendtext 'Point(ASIO128.IN[1..4],ASIO128.OUT[1]).dBGain = -3.0'
+```
+
 ## Implementation Notes
 
 1. The VBAN TEXT subprotocol defines two packet structures [ident:0][ident-0] and [ident:1][ident-1]. Neither of them contain the data for Bus EQ parameters.
