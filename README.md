@@ -125,6 +125,8 @@ vban-cli sendtext 'Command.Version = ?'
 vban-cli sendtext 'Point(ASIO128.IN[1..4],ASIO128.OUT[1]).dBGain = -3.0'
 ```
 
+see `vban-cli sendtext --help` for more info.
+
 ## Implementation Notes
 
 1. The VBAN TEXT subprotocol defines two packet structures [ident:0][ident-0] and [ident:1][ident-1]. Neither of them contain the data for Bus EQ parameters.
