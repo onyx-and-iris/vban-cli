@@ -117,6 +117,22 @@ vban-cli command restart
 
 see `vban-cli command --help` for more info.
 
+### Recorder Command
+
+Usage: vban-cli recorder COMMAND
+
+examples:
+
+```console
+vban-cli recorder play
+
+vban-cli recorder rew
+
+vban-cli recorder replay
+```
+
+see `vban-cli recorder --help` for more info.
+
 ### Sendtext Command
 
 Usage: vban-cli sendtext TEXT
