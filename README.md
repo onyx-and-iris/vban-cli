@@ -137,9 +137,9 @@ see `vban-cli recorder --help` for more info.
 
 Usage: vban-cli sendtext TEXT
 
-*To Voicemeeter*
-
 examples:
+
+*To Voicemeeter*
 
 ```console
 vban-cli sendtext 'Strip[0].Mute=1;Bus[0].Mono=2'
