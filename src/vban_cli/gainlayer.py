@@ -2,7 +2,6 @@ from typing import Annotated
 
 from cyclopts import App, Argument, Parameter
 
-from . import console
 from .context import Context
 from .help import GainlayerHelpFormatter
 
@@ -43,6 +42,6 @@ def level(
         If provided, sets the level to this value. If not provided, the current level is printed.
     """
     if new_level is None:
-        console.out.print(ctx.client.strip[strip_index].gainlayer[gainlayer_index].gain)
+        app.console.print(ctx.client.strip[strip_index].gainlayer[gainlayer_index].gain)
         return
     ctx.client.strip[strip_index].gainlayer[gainlayer_index].gain = new_level

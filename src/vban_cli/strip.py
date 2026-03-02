@@ -2,7 +2,7 @@ from typing import Annotated, Optional
 
 from cyclopts import App, Argument, Parameter
 
-from . import comp, console, denoiser, eq, gainlayer, gate
+from . import comp, denoiser, eq, gainlayer, gate
 from .context import Context
 from .help import StripHelpFormatter
 
@@ -47,7 +47,7 @@ def mono(
         If provided, sets the mono state to this value. If not provided, the current mono state is printed.
     """
     if new_state is None:
-        console.out.print(ctx.client.strip[index].mono)
+        app.console.print(ctx.client.strip[index].mono)
         return
     ctx.client.strip[index].mono = new_state
 
@@ -67,7 +67,7 @@ def solo(
         If provided, sets the solo state to this value. If not provided, the current solo state is printed.
     """
     if new_state is None:
-        console.out.print(ctx.client.strip[index].solo)
+        app.console.print(ctx.client.strip[index].solo)
         return
     ctx.client.strip[index].solo = new_state
 
@@ -87,7 +87,7 @@ def mute(
         If provided, sets the mute state to this value. If not provided, the current mute state is printed.
     """
     if new_state is None:
-        console.out.print(ctx.client.strip[index].mute)
+        app.console.print(ctx.client.strip[index].mute)
         return
     ctx.client.strip[index].mute = new_state
 
@@ -107,7 +107,7 @@ def gain(
         If provided, sets the gain to this value. If not provided, the current gain is printed.
     """
     if new_value is None:
-        console.out.print(ctx.client.strip[index].gain)
+        app.console.print(ctx.client.strip[index].gain)
         return
     ctx.client.strip[index].gain = new_value
 
@@ -127,7 +127,7 @@ def a1(
         If provided, sets the A1 state to this value. If not provided, the current A1 state is printed.
     """
     if new_value is None:
-        console.out.print(ctx.client.strip[index].A1)
+        app.console.print(ctx.client.strip[index].A1)
         return
     ctx.client.strip[index].A1 = new_value
 
@@ -147,7 +147,7 @@ def a2(
         If provided, sets the A2 state to this value. If not provided, the current A2 state is printed.
     """
     if new_value is None:
-        console.out.print(ctx.client.strip[index].A2)
+        app.console.print(ctx.client.strip[index].A2)
         return
     ctx.client.strip[index].A2 = new_value
 
@@ -167,7 +167,7 @@ def a3(
         If provided, sets the A3 state to this value. If not provided, the current A3 state is printed.
     """
     if new_value is None:
-        console.out.print(ctx.client.strip[index].A3)
+        app.console.print(ctx.client.strip[index].A3)
         return
     ctx.client.strip[index].A3 = new_value
 
@@ -187,7 +187,7 @@ def a4(
         If provided, sets the A4 state to this value. If not provided, the current A4 state is printed.
     """
     if new_value is None:
-        console.out.print(ctx.client.strip[index].A4)
+        app.console.print(ctx.client.strip[index].A4)
         return
     ctx.client.strip[index].A4 = new_value
 
@@ -207,7 +207,7 @@ def a5(
         If provided, sets the A5 state to this value. If not provided, the current A5 state is printed.
     """
     if new_value is None:
-        console.out.print(ctx.client.strip[index].A5)
+        app.console.print(ctx.client.strip[index].A5)
         return
     ctx.client.strip[index].A5 = new_value
 
@@ -227,7 +227,7 @@ def b1(
         If provided, sets the B1 state to this value. If not provided, the current B1 state is printed.
     """
     if new_value is None:
-        console.out.print(ctx.client.strip[index].B1)
+        app.console.print(ctx.client.strip[index].B1)
         return
     ctx.client.strip[index].B1 = new_value
 
@@ -247,7 +247,7 @@ def b2(
         If provided, sets the B2 state to this value. If not provided, the current B2 state is printed.
     """
     if new_value is None:
-        console.out.print(ctx.client.strip[index].B2)
+        app.console.print(ctx.client.strip[index].B2)
         return
     ctx.client.strip[index].B2 = new_value
 
@@ -267,6 +267,6 @@ def b3(
         If provided, sets the B3 state to this value. If not provided, the current B3 state is printed.
     """
     if new_value is None:
-        console.out.print(ctx.client.strip[index].B3)
+        app.console.print(ctx.client.strip[index].B3)
         return
     ctx.client.strip[index].B3 = new_value

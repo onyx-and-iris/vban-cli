@@ -3,7 +3,7 @@ from typing import Annotated
 
 from cyclopts import App, Parameter, validators
 
-from . import console, validation
+from . import validation
 from .context import Context
 from .help import BaseHelpFormatter
 
@@ -17,7 +17,7 @@ def play(
 ):
     """Start the recorder playback."""
     ctx.client.recorder.play()
-    console.out.print('Recorder playback started.')
+    app.console.print('Recorder playback started.')
 
 
 @app.command(name='pause')
@@ -27,7 +27,7 @@ def pause(
 ):
     """Pause the recorder playback."""
     ctx.client.recorder.stop()
-    console.out.print('Recorder playback paused.')
+    app.console.print('Recorder playback paused.')
 
 
 @app.command(name='stop')
@@ -40,7 +40,7 @@ def stop(
     ctx.client.recorder.goto('00:00:00')
     # We have no way of knowing if the recorder was playing or recording, so we print a generic message.
     # See https://github.com/onyx-and-iris/vban-cli?tab=readme-ov-file#implementation-notes - 4.
-    console.out.print('Recorder stopped.')
+    app.console.print('Recorder stopped.')
 
 
 @app.command(name='replay')
@@ -50,7 +50,7 @@ def replay(
 ):
     """Replay the recorder playback."""
     ctx.client.recorder.replay()
-    console.out.print('Recorder playback replay started.')
+    app.console.print('Recorder playback replay started.')
 
 
 @app.command(name='record')
@@ -60,7 +60,7 @@ def record(
 ):
     """Start recording."""
     ctx.client.recorder.record()
-    console.out.print('Recorder recording started.')
+    app.console.print('Recorder recording started.')
 
 
 @app.command(name='pause-recording')
@@ -70,7 +70,7 @@ def pause_recording(
 ):
     """Pause the recorder recording."""
     ctx.client.recorder.pause()
-    console.out.print('Recorder recording paused.')
+    app.console.print('Recorder recording paused.')
 
 
 @app.command(name='ff')
@@ -80,7 +80,7 @@ def ff(
 ):
     """Fast forward the recorder playback."""
     ctx.client.recorder.ff()
-    console.out.print('Recorder playback fast forwarded.')
+    app.console.print('Recorder playback fast forwarded.')
 
 
 @app.command(name='rew')
@@ -90,7 +90,7 @@ def rew(
 ):
     """Rewind the recorder playback."""
     ctx.client.recorder.rew()
-    console.out.print('Recorder playback rewound.')
+    app.console.print('Recorder playback rewound.')
 
 
 @app.command(name='load')
@@ -110,7 +110,7 @@ def load(
 
     note: This command may only work if vban-cli is running on localhost and may not work if vban-cli is running on a remote server."""
     ctx.client.recorder.load(file_path)
-    console.out.print(f'Loaded file: {file_path}')
+    app.console.print(f'Loaded file: {file_path}')
 
 
 @app.command(name='goto')
@@ -128,4 +128,4 @@ def goto(
 ):
     """Go to a specific timestamp in the recorder playback."""
     ctx.client.recorder.goto(time_string)
-    console.out.print(f'Went to timestamp {time_string} in recorder playback.')
+    app.console.print(f'Went to timestamp {time_string} in recorder playback.')

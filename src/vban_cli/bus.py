@@ -2,7 +2,6 @@ from typing import Annotated, Literal, Optional
 
 from cyclopts import App, Argument, Parameter
 
-from . import console
 from .context import Context
 from .help import BusHelpFormatter
 
@@ -46,7 +45,7 @@ def mono(
         If provided, sets the mono state to this value. If not provided, the current mono state is printed.
     """
     if new_value is None:
-        console.out.print(['off', 'mono', 'stereoreverse'][ctx.client.bus[index].mono])
+        app.console.print(['off', 'mono', 'stereoreverse'][ctx.client.bus[index].mono])
         return
     ctx.client.bus[index].mono = ['off', 'mono', 'stereoreverse'].index(new_value)
 
@@ -66,7 +65,7 @@ def mute(
         If provided, sets the mute state to this value. If not provided, the current mute state is printed.
     """
     if new_value is None:
-        console.out.print(ctx.client.bus[index].mute)
+        app.console.print(ctx.client.bus[index].mute)
         return
     ctx.client.bus[index].mute = new_value
 
@@ -104,6 +103,6 @@ def mode(
         If provided, sets the bus mode to this value. If not provided, the current bus mode is printed.
     """
     if type_ is None:
-        console.out.print(ctx.client.bus[index].mode.get())
+        app.console.print(ctx.client.bus[index].mode.get())
         return
     setattr(ctx.client.bus[index].mode, type_, True)

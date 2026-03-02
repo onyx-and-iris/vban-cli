@@ -39,7 +39,7 @@ def knob(
     """
     if new_knob is None:
         # See https://github.com/onyx-and-iris/vban-cli?tab=readme-ov-file#implementation-notes - 2.
-        # console.out.print(ctx.client.strip[index].gate.knob)
+        # app.console.print(ctx.client.strip[index].gate.knob)
         return
     ctx.client.strip[index].gate.knob = new_knob
 
@@ -60,6 +60,6 @@ def threshold(
     """
     if new_threshold is None:
         # See https://github.com/onyx-and-iris/vban-cli?tab=readme-ov-file#implementation-notes - 2.
-        # console.out.print(ctx.client.strip[index].gate.threshold)
+        # app.console.print(ctx.client.strip[index].gate.threshold)
         return
     ctx.client.strip[index].gate.threshold = new_threshold

@@ -48,7 +48,7 @@ def on(
     """
     if new_state is None:
         # See https://github.com/onyx-and-iris/vban-cli?tab=readme-ov-file#implementation-notes - 2.
-        # console.out.print(target.on)
+        # app.console.print(target.on)
         return
     target.on = new_state
 
@@ -86,7 +86,7 @@ def cell_on(
     """
     if new_state is None:
         # See https://github.com/onyx-and-iris/vban-cli?tab=readme-ov-file#implementation-notes - 2.
-        # console.out.print(target.on)
+        # app.console.print(target.on)
         return
     target.on = new_state
 
@@ -106,7 +106,7 @@ def cell_freq(
     """
     if new_freq is None:
         # See https://github.com/onyx-and-iris/vban-cli?tab=readme-ov-file#implementation-notes - 2.
-        # console.out.print(target.f)
+        # app.console.print(target.f)
         return
     target.f = new_freq
 
@@ -126,7 +126,7 @@ def cell_gain(
     """
     if new_gain is None:
         # See https://github.com/onyx-and-iris/vban-cli?tab=readme-ov-file#implementation-notes - 2.
-        # console.out.print(target.gain)
+        # app.console.print(target.gain)
         return
     target.gain = new_gain
 
@@ -146,7 +146,7 @@ def cell_q(
     """
     if new_q is None:
         # See https://github.com/onyx-and-iris/vban-cli?tab=readme-ov-file#implementation-notes - 2.
-        # console.out.print(target.q)
+        # app.console.print(target.q)
         return
     target.q = new_q
 
@@ -166,6 +166,6 @@ def cell_type(
     """
     if new_type is None:
         # See https://github.com/onyx-and-iris/vban-cli?tab=readme-ov-file#implementation-notes - 2.
-        # console.out.print(target.type)
+        # app.console.print(target.type)
         return
     target.type = new_type

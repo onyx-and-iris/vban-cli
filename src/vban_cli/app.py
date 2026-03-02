@@ -3,22 +3,29 @@ from typing import Annotated
 
 import vban_cmd
 from cyclopts import App, Argument, Parameter, config
+from rich.traceback import install as install_rich_traceback
 
 from . import __version__ as version
 from . import bus, command, console, recorder, strip
 from .context import Context
+from .error import VbanCLIConnectionError
 
 app = App(
     config=config.Env(
         'VBAN_CLI_',
     ),  # Environment variable prefix for configuration parameters
     version=version,
+    console=console.out,
+    error_console=console.err,
+    exit_on_error=True,
 )
 app.command(strip.app.meta, name='strip')
 app.command(bus.app.meta, name='bus')
 app.command(command.app, name='command')
 app.command(recorder.app, name='recorder')
 app.register_install_completion_command()
+
+install_rich_traceback(console=console.err)
 
 
 @Parameter(name='*')
@@ -43,14 +50,17 @@ def launcher(
     if command.__name__ == 'sendtext':
         disable_rt_listeners = True
 
-    with vban_cmd.api(
-        vban_config.kind,
-        ip=vban_config.host,
-        port=vban_config.port,
-        streamname=vban_config.streamname,
-        disable_rt_listeners=disable_rt_listeners,
-    ) as client:
-        return command(*bound.args, **bound.kwargs, ctx=Context(client=client))
+    try:
+        with vban_cmd.api(
+            vban_config.kind,
+            ip=vban_config.host,
+            port=vban_config.port,
+            streamname=vban_config.streamname,
+            disable_rt_listeners=disable_rt_listeners,
+        ) as client:
+            return command(*bound.args, **bound.kwargs, ctx=Context(client=client))
+    except vban_cmd.error.VBANCMDConnectionError as e:
+        raise VbanCLIConnectionError(str(e)) from e
 
 
 @app.command(name='sendtext')
@@ -62,12 +72,8 @@ def sendtext(
 ):
     """Send a text command to the current Voicemeeter/Matrix instance."""
     if resp := ctx.client.sendtext(text):
-        console.out.print(resp)
+        app.console.print(resp)
 
 
 def run():
-    try:
-        app.meta()
-    except Exception as e:
-        console.err.print(f'Error: {e}')
-        return e.code
+    app.meta()

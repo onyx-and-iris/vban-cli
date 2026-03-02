@@ -39,6 +39,6 @@ def knob(
     """
     if new_knob is None:
         # See https://github.com/onyx-and-iris/vban-cli?tab=readme-ov-file#implementation-notes - 2.
-        # console.out.print(ctx.client.strip[index].denoiser.knob)
+        # app.console.print(ctx.client.strip[index].denoiser.knob)
         return
     ctx.client.strip[index].denoiser.knob = new_knob
