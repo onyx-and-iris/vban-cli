@@ -2,7 +2,7 @@ from typing import Annotated, Optional
 
 from cyclopts import App, Argument, Parameter
 
-from . import comp, console, denoiser, eq, gate
+from . import comp, console, denoiser, eq, gainlayer, gate
 from .context import Context
 from .help import StripHelpFormatter
 
@@ -11,6 +11,7 @@ app.command(eq.app.meta, name='eq')
 app.command(comp.app.meta, name='comp')
 app.command(gate.app.meta, name='gate')
 app.command(denoiser.app.meta, name='denoiser')
+app.command(gainlayer.app.meta, name='gainlayer')
 
 
 @app.meta.default

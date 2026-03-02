@@ -95,6 +95,22 @@ class EqHelpFormatter(BaseHelpFormatter):
             console.print(f'[bold]Usage:[/bold] {modified_usage}')
 
 
+class GainlayerHelpFormatter(BaseHelpFormatter):
+    """Help formatter for gainlayer commands that works with strip commands.
+
+    Injects <index> after 'strip' and <gainlayer_index> after 'gainlayer'."""
+
+    def render_usage(self, console: Console, options: ConsoleOptions, usage) -> None:
+        """Render the usage line with proper <index> placement for strip commands."""
+        if usage:
+            modified_usage = re.sub(
+                r'(\S+\s+strip)(\s+gainlayer\s+)(COMMAND)',
+                r'\1 <index>\2<[cyan]gainlayer_index[/cyan]> \3',
+                str(usage),
+            )
+            console.print(f'[bold]Usage:[/bold] {modified_usage}')
+
+
 class CellHelpFormatter(BaseHelpFormatter):
     """Help formatter for cell commands that works with both strip and bus commands.
 
@@ -105,7 +121,7 @@ class CellHelpFormatter(BaseHelpFormatter):
         if usage:
             modified_usage = re.sub(
                 r'(\S+\s+)(\w+)(\s+eq\s+cell\s+)(COMMAND)',
-                r'\1\2 <index>\3<band> \4',
+                r'\1\2 <index>\3<[cyan]band[/cyan]> \4',
                 str(usage),
             )
             console.print(f'[bold]Usage:[/bold] {modified_usage}')
