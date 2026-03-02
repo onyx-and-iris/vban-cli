@@ -93,6 +93,20 @@ vban-cli strip 4 eq cell 5 type 5
 
 see `vban-cli strip eq cell --help` for more info.
 
+#### Strip Gainlayer Command
+
+Usage: vban-cli strip <index> gainlayer <gainlayer_index> COMMAND [OPTIONS] [ARGS]
+
+examples:
+
+```console
+vban-cli strip 0 gainlayer 0 level
+
+vban-cli strip 3 gainlayer 2 level -13.5
+```
+
+see `vban-cli strip gainlayer --help` for more info.
+
 ### Bus Command
 
 Usage: vban-cli bus \<index> COMMAND [ARGS]
