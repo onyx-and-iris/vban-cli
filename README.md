@@ -5,8 +5,6 @@
 
 ---
 
-This CLI is still in an early stage of development with many more things that could be implemented. However, the commands that are implemented should be working without issues.
-
 ## Install
 
 #### With uv
