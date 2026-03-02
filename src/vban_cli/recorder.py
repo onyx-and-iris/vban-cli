@@ -20,24 +20,27 @@ def play(
     console.out.print('Recorder playback started.')
 
 
-@app.command(name='stop')
-def stop(
-    *,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
-):
-    """Stop the recorder playback."""
-    ctx.client.recorder.stop()
-    console.out.print('Recorder playback stopped.')
-
-
 @app.command(name='pause')
 def pause(
     *,
     ctx: Annotated[Context, Parameter(show=False)] = None,
 ):
     """Pause the recorder playback."""
-    ctx.client.recorder.pause()
+    ctx.client.recorder.stop()
     console.out.print('Recorder playback paused.')
+
+
+@app.command(name='stop')
+def stop(
+    *,
+    ctx: Annotated[Context, Parameter(show=False)] = None,
+):
+    """Stop the recorder playback/recording and reset to the beginning."""
+    ctx.client.recorder.stop()
+    ctx.client.recorder.goto('00:00:00')
+    # We have no way of knowing if the recorder was playing or recording, so we print a generic message.
+    # See https://github.com/onyx-and-iris/vban-cli?tab=readme-ov-file#implementation-notes - 4.
+    console.out.print('Recorder stopped.')
 
 
 @app.command(name='replay')
@@ -57,7 +60,17 @@ def record(
 ):
     """Start recording."""
     ctx.client.recorder.record()
-    console.out.print('Recording started.')
+    console.out.print('Recorder recording started.')
+
+
+@app.command(name='pause-recording')
+def pause_recording(
+    *,
+    ctx: Annotated[Context, Parameter(show=False)] = None,
+):
+    """Pause the recorder recording."""
+    ctx.client.recorder.pause()
+    console.out.print('Recorder recording paused.')
 
 
 @app.command(name='ff')
