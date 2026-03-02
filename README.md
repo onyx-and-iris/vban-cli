@@ -51,7 +51,7 @@ export VBAN_CLI_STREAMNAME=Command1
 
 ### Strip Command
 
-*Usage: vban-cli strip \<index> COMMAND [ARGS]*
+*Usage: vban-cli strip \<index> COMMAND [OPTIONS]*
 
 examples:
 
@@ -95,7 +95,7 @@ see `vban-cli strip eq cell --help` for more info.
 
 ##### Strip Comp Command
 
-*Usage: vban-cli strip \<index> comp COMMAND*
+*Usage: vban-cli strip \<index> comp COMMAND [OPTIONS]*
 
 examples:
 
@@ -103,6 +103,20 @@ examples:
 vban-cli strip 0 comp attack 2.0
 
 vban-cli strip 3 comp auto-makeup true
+```
+
+see `vban-cli strip comp --help` for more info.
+
+##### Strip Gate Command
+
+*Usage: vban-cli strip \<index> gate COMMAND [OPTIONS]*
+
+examples:
+
+```console
+vban-cli strip 2 gate attack 634
+
+vban-cli strip 5 gate hold 2088.7
 ```
 
 see `vban-cli strip comp --help` for more info.
@@ -123,7 +137,7 @@ see `vban-cli strip gainlayer --help` for more info.
 
 ### Bus Command
 
-*Usage: vban-cli bus \<index> COMMAND [ARGS]*
+*Usage: vban-cli bus \<index> COMMAND [OPTIONS]*
 
 examples:
 
