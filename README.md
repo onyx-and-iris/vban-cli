@@ -144,9 +144,9 @@ examples:
 ```console
 vban-cli recorder play
 
-vban-cli recorder rew
+vban-cli recorder pause
 
-vban-cli recorder replay
+vban-cli recorder goto "00:01:30"
 ```
 
 see `vban-cli recorder --help` for more info.
@@ -180,6 +180,7 @@ see `vban-cli sendtext --help` for more info.
 1. The VBAN RT SERVICE subprotocol defines two packet structures [ident:0][ident-0] and [ident:1][ident-1]. Neither of them contain the data for Bus EQ parameters.
 2. Packet structure with [ident:1][ident-1] is emitted by the VBAN server only on pdirty events. This means we do not receive the current state of those parameters on initial subscription. Therefore any commands which are intended to fetch the value of parameters defined in packet [ident:1][ident-1] will not work in this CLI.
 3. Packet structure with [ident:1][ident-1] defines parameteric EQ data only for the [first channel][ident-1-peq].
+4. There doesn't appear to be any way to retrieve the current recorder status, ie, recording, playing, stopped etc.
 
 ---
 
