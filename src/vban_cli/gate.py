@@ -88,7 +88,7 @@ def damping_max(
 
 @app.command(name='bp-sidechain')
 def bp_sidechain(
-    new_bp_sidechain: Annotated[bool, Argument()] = None,
+    new_bp_sidechain: Annotated[float, Argument()] = None,
     *,
     index: Annotated[int, Parameter(parse=False)],
     ctx: Annotated[Context, Parameter(parse=False)],
@@ -97,7 +97,7 @@ def bp_sidechain(
 
     Parameters
     ----------
-    new_bp_sidechain : bool, optional
+    new_bp_sidechain : float, optional
         If provided, sets the BP sidechain to this value. If not provided, the current BP sidechain is printed.
     """
     if new_bp_sidechain is None:
