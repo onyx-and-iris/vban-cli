@@ -53,7 +53,7 @@ def launcher(
     try:
         with vban_cmd.api(
             vban_config.kind,
-            ip=vban_config.host,
+            host=vban_config.host,
             port=vban_config.port,
             streamname=vban_config.streamname,
             disable_rt_listeners=disable_rt_listeners,
