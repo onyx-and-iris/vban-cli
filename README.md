@@ -95,7 +95,7 @@ see `vban-cli strip eq cell --help` for more info.
 
 #### Strip Gainlayer Command
 
-Usage: vban-cli strip <index> gainlayer <gainlayer_index> COMMAND [OPTIONS] [ARGS]
+Usage: vban-cli strip \<index> gainlayer \<gainlayer_index> COMMAND [OPTIONS] [ARGS]
 
 examples:
 
