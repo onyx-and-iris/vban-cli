@@ -85,6 +85,10 @@ examples:
 
 ```console
 vban-cli strip 0 eq cell 0 on false
+
+vban-cli strip 3 eq cell 2 freq 1500
+
+vban-cli strip 4 eq cell 5 type 5
 ```
 
 see `vban-cli strip eq cell --help` for more info.
