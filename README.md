@@ -51,7 +51,7 @@ export VBAN_CLI_STREAMNAME=Command1
 
 ### Strip Command
 
-Usage: vban-cli strip \<index> COMMAND [ARGS]
+*Usage: vban-cli strip \<index> COMMAND [ARGS]*
 
 examples:
 
@@ -67,7 +67,7 @@ see `vban-cli strip --help` for more info.
 
 ##### Strip EQ
 
-Usage: vban-cli strip \<index> eq COMMAND [OPTIONS]
+*Usage: vban-cli strip \<index> eq COMMAND [OPTIONS]*
 
 examples:
 
@@ -79,7 +79,7 @@ see `vban-cli strip eq --help` for more info.
 
 ##### Strip EQ Cell Command
 
-Usage: vban-cli strip \<index> eq cell \<band> COMMAND [ARGS]
+*Usage: vban-cli strip \<index> eq cell \<band> COMMAND [ARGS]*
 
 examples:
 
@@ -95,7 +95,7 @@ see `vban-cli strip eq cell --help` for more info.
 
 ##### Strip Comp Command
 
-Usage: vban-cli strip \<index> comp COMMAND
+*Usage: vban-cli strip \<index> comp COMMAND*
 
 examples:
 
@@ -109,7 +109,7 @@ see `vban-cli strip comp --help` for more info.
 
 ##### Strip Gainlayer Command
 
-Usage: vban-cli strip \<index> gainlayer \<gainlayer_index> COMMAND [OPTIONS] [ARGS]
+*Usage: vban-cli strip \<index> gainlayer \<gainlayer_index> COMMAND [OPTIONS] [ARGS]*
 
 examples:
 
@@ -123,7 +123,7 @@ see `vban-cli strip gainlayer --help` for more info.
 
 ### Bus Command
 
-Usage: vban-cli bus \<index> COMMAND [ARGS]
+*Usage: vban-cli bus \<index> COMMAND [ARGS]*
 
 examples:
 
@@ -137,7 +137,7 @@ see `vban-cli bus --help` for more info.
 
 ### Command Command
 
-Usage: vban-cli command COMMAND
+*Usage: vban-cli command COMMAND*
 
 examples:
 
@@ -151,7 +151,7 @@ see `vban-cli command --help` for more info.
 
 ### Recorder Command
 
-Usage: vban-cli recorder COMMAND
+*Usage: vban-cli recorder COMMAND*
 
 examples:
 
@@ -167,7 +167,7 @@ see `vban-cli recorder --help` for more info.
 
 ### Sendtext Command
 
-Usage: vban-cli sendtext TEXT
+*Usage: vban-cli sendtext TEXT*
 
 examples:
 
