@@ -56,8 +56,16 @@ class StripHelpFormatter(BaseHelpFormatter):
             )
             if modified_usage == str(usage):
                 modified_usage = re.sub(
-                    r'(\S+\s+strip)\s+(\w+)', r'\1 <index> \2', str(usage)
+                    r'(\S+\s+strip)\s+(\w+)',
+                    r'\1 <index> \2 [OPTIONS] [ARGS]',
+                    str(usage),
                 )
+            # Handle main strip command and subcommand groups
+            modified_usage = re.sub(
+                r'\bCOMMAND\b(?!\s+\[)', 'COMMAND [OPTIONS]', modified_usage
+            )
+            # Remove the duplicate INDEX that gets automatically added by cyclopts
+            modified_usage = re.sub(r'\s+INDEX$', '', modified_usage)
             console.print(f'[bold]Usage:[/bold] {modified_usage}')
 
 
@@ -76,8 +84,16 @@ class BusHelpFormatter(BaseHelpFormatter):
             )
             if modified_usage == str(usage):
                 modified_usage = re.sub(
-                    r'(\S+\s+bus)\s+(\w+)', r'\1 <index> \2', str(usage)
+                    r'(\S+\s+bus)\s+(\w+)',
+                    r'\1 <index> \2 [OPTIONS] [ARGS]',
+                    str(usage),
                 )
+            # Handle main bus command and subcommand groups
+            modified_usage = re.sub(
+                r'\bCOMMAND\b(?!\s+\[)', 'COMMAND [OPTIONS]', modified_usage
+            )
+            # Remove the duplicate INDEX that gets automatically added by cyclopts
+            modified_usage = re.sub(r'\s+INDEX$', '', modified_usage)
             console.print(f'[bold]Usage:[/bold] {modified_usage}')
 
 
@@ -90,7 +106,9 @@ class EqHelpFormatter(BaseHelpFormatter):
         """Render the usage line with proper <index> placement for both strip and bus commands."""
         if usage:
             modified_usage = re.sub(
-                r'(\S+\s+)(\w+)(\s+eq\s+)(COMMAND)', r'\1\2 <index>\3\4', str(usage)
+                r'(\S+\s+)(\w+)(\s+eq\s+)(COMMAND)',
+                r'\1\2 <index>\3\4 [OPTIONS]',
+                str(usage),
             )
             console.print(f'[bold]Usage:[/bold] {modified_usage}')
 
@@ -105,9 +123,11 @@ class GainlayerHelpFormatter(BaseHelpFormatter):
         if usage:
             modified_usage = re.sub(
                 r'(\S+\s+strip)(\s+gainlayer\s+)(COMMAND)',
-                r'\1 <index>\2<[cyan]gainlayer_index[/cyan]> \3',
+                r'\1 <index>\2<[cyan]gainlayer_index[/cyan]> \3 [OPTIONS] [ARGS]',
                 str(usage),
             )
+            # Remove the duplicate GAINLAYER_INDEX that gets automatically added by cyclopts
+            modified_usage = re.sub(r'\s+GAINLAYER_INDEX$', '', modified_usage)
             console.print(f'[bold]Usage:[/bold] {modified_usage}')
 
 
@@ -121,7 +141,9 @@ class CellHelpFormatter(BaseHelpFormatter):
         if usage:
             modified_usage = re.sub(
                 r'(\S+\s+)(\w+)(\s+eq\s+cell\s+)(COMMAND)',
-                r'\1\2 <index>\3<[cyan]band[/cyan]> \4',
+                r'\1\2 <index>\3<[cyan]band[/cyan]> \4 [ARGS]',
                 str(usage),
             )
+            # Remove the duplicate BAND that gets automatically added by cyclopts
+            modified_usage = re.sub(r'\s+BAND$', '', modified_usage)
             console.print(f'[bold]Usage:[/bold] {modified_usage}')
