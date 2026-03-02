@@ -65,7 +65,7 @@ vban-cli strip 2 gain -18.7
 
 see `vban-cli strip --help` for more info.
 
-#### Strip EQ
+##### Strip EQ
 
 Usage: vban-cli strip \<index> eq COMMAND [OPTIONS]
 
@@ -77,7 +77,7 @@ vban-cli strip 0 eq on true
 
 see `vban-cli strip eq --help` for more info.
 
-#### Strip EQ Cell Command
+##### Strip EQ Cell Command
 
 Usage: vban-cli strip \<index> eq cell \<band> COMMAND [ARGS]
 
@@ -93,7 +93,21 @@ vban-cli strip 4 eq cell 5 type 5
 
 see `vban-cli strip eq cell --help` for more info.
 
-#### Strip Gainlayer Command
+##### Strip Comp Command
+
+Usage: vban-cli strip \<index> comp COMMAND
+
+examples:
+
+```console
+vban-cli strip 0 comp attack 2.0
+
+vban-cli strip 3 comp auto-makeup true
+```
+
+see `vban-cli strip comp --help` for more info.
+
+##### Strip Gainlayer Command
 
 Usage: vban-cli strip \<index> gainlayer \<gainlayer_index> COMMAND [OPTIONS] [ARGS]
 
