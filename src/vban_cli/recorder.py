@@ -13,7 +13,7 @@ app = App(name='recorder', help_formatter=BaseHelpFormatter())
 @app.command(name='play')
 def play(
     *,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Start the recorder playback."""
     ctx.client.recorder.play()
@@ -23,7 +23,7 @@ def play(
 @app.command(name='pause')
 def pause(
     *,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Pause the recorder playback."""
     ctx.client.recorder.stop()
@@ -33,7 +33,7 @@ def pause(
 @app.command(name='stop')
 def stop(
     *,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Stop the recorder playback/recording and reset to the beginning."""
     ctx.client.recorder.stop()
@@ -46,7 +46,7 @@ def stop(
 @app.command(name='replay')
 def replay(
     *,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Replay the recorder playback."""
     ctx.client.recorder.replay()
@@ -56,7 +56,7 @@ def replay(
 @app.command(name='record')
 def record(
     *,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Start recording."""
     ctx.client.recorder.record()
@@ -66,7 +66,7 @@ def record(
 @app.command(name='pause-recording')
 def pause_recording(
     *,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Pause the recorder recording."""
     ctx.client.recorder.pause()
@@ -76,7 +76,7 @@ def pause_recording(
 @app.command(name='ff')
 def ff(
     *,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Fast forward the recorder playback."""
     ctx.client.recorder.ff()
@@ -86,7 +86,7 @@ def ff(
 @app.command(name='rew')
 def rew(
     *,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Rewind the recorder playback."""
     ctx.client.recorder.rew()
@@ -104,7 +104,7 @@ def load(
     ],
     /,
     *,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Load a file into the recorder.
 
@@ -124,7 +124,7 @@ def goto(
     ],
     /,
     *,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Go to a specific timestamp in the recorder playback."""
     ctx.client.recorder.goto(time_string)

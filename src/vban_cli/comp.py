@@ -11,16 +11,14 @@ app = App(name='comp', help_formatter=StripHelpFormatter())
 @app.meta.default
 def launcher(
     *tokens: Annotated[str, Parameter(show=False, allow_leading_hyphen=True)],
-    index: Annotated[int, Argument()] = None,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    index: Annotated[int, Parameter(parse=False)],
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Control the compressor parameters."""
     additional_kwargs = {}
     command, bound, _ = app.parse_args(tokens)
-    if index is not None:
-        additional_kwargs['index'] = index
-    if ctx is not None:
-        additional_kwargs['ctx'] = ctx
+    additional_kwargs['index'] = index
+    additional_kwargs['ctx'] = ctx
 
     return command(*bound.args, **bound.kwargs, **additional_kwargs)
 
@@ -29,8 +27,8 @@ def launcher(
 def knob(
     new_knob: Annotated[float, Argument()] = None,
     *,
-    index: Annotated[int, Parameter(show=False)] = None,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    index: Annotated[int, Parameter(parse=False)],
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Get or set the knob of the specified compressor.
 
@@ -50,8 +48,8 @@ def knob(
 def input_gain(
     new_gain: Annotated[float, Argument()] = None,
     *,
-    index: Annotated[int, Parameter(show=False)] = None,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    index: Annotated[int, Parameter(parse=False)],
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Get or set the input gain of the specified compressor.
 

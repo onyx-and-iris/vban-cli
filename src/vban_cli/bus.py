@@ -13,19 +13,18 @@ app = App(name='bus', help_formatter=BusHelpFormatter())
 
 @app.meta.default
 def launcher(
-    index: Annotated[int, Argument()] = None,
+    index: Annotated[int, Argument()],
+    /,
     *tokens: Annotated[str, Parameter(show=False, allow_leading_hyphen=True)],
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Control the bus parameters."""
     additional_kwargs = {}
     command, bound, _ = app.parse_args(tokens)
     if tokens[0] == 'eq':
         additional_kwargs['eq_kind'] = app.name[0]
-    if index is not None:
-        additional_kwargs['index'] = index
-    if ctx is not None:
-        additional_kwargs['ctx'] = ctx
+    additional_kwargs['index'] = index
+    additional_kwargs['ctx'] = ctx
 
     return command(*bound.args, **bound.kwargs, **additional_kwargs)
 
@@ -36,8 +35,8 @@ def mono(
         Optional[Literal['off', 'mono', 'stereoreverse']], Argument()
     ] = None,
     *,
-    index: Annotated[int, Parameter(show=False)] = None,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    index: Annotated[int, Parameter(parse=False)],
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Get or set the mono state of the specified bus.
 
@@ -56,8 +55,8 @@ def mono(
 def mute(
     new_value: Annotated[Optional[bool], Argument()] = None,
     *,
-    index: Annotated[int, Parameter(show=False)] = None,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    index: Annotated[int, Parameter(parse=False)],
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Get or set the mute state of the specified bus.
 
@@ -94,8 +93,8 @@ def mode(
         Argument(),
     ] = None,
     *,
-    index: Annotated[int, Parameter(show=False)] = None,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    index: Annotated[int, Parameter(parse=False)],
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Get or set the bus mode of the specified bus.
 

@@ -58,7 +58,7 @@ def sendtext(
     text: Annotated[str, Argument()],
     /,
     *,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Send a text command to the current Voicemeeter/Matrix instance."""
     if resp := ctx.client.sendtext(text):

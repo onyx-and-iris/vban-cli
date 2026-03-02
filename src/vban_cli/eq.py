@@ -14,9 +14,9 @@ app.command(cell_app.meta, name='cell')
 @app.meta.default
 def launcher(
     *tokens: Annotated[str, Parameter(show=False, allow_leading_hyphen=True)],
-    eq_kind: Annotated[str, Parameter(show=False)] = None,
-    index: Annotated[int, Argument()] = None,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    eq_kind: Annotated[str, Parameter(parse=False)],
+    index: Annotated[int, Parameter(parse=False)],
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Control the EQ parameters."""
     additional_kwargs = {}
@@ -37,7 +37,7 @@ def launcher(
 def on(
     new_state: Annotated[bool, Argument()] = None,
     *,
-    target: Annotated[object, Parameter(show=False)] = None,
+    target: Annotated[object, Parameter(parse=False)],
 ):
     """Get or set the on state of the specified EQ band.
 
@@ -55,9 +55,10 @@ def on(
 
 @cell_app.meta.default
 def cell_launcher(
-    band: Annotated[int, Argument()] = None,
+    band: Annotated[int, Argument()],
+    /,
     *tokens: Annotated[str, Parameter(show=False, allow_leading_hyphen=True)],
-    target: Annotated[object, Parameter(show=False)] = None,
+    target: Annotated[object, Parameter(parse=False)],
 ):
     """Control the EQ Cell parameters.
 
@@ -74,7 +75,7 @@ def cell_launcher(
 def cell_on(
     new_state: Annotated[bool, Argument()] = None,
     *,
-    target: Annotated[object, Parameter(show=False)] = None,
+    target: Annotated[object, Parameter(parse=False)],
 ):
     """Get or set the on state of the specified EQ cell.
 
@@ -94,7 +95,7 @@ def cell_on(
 def cell_freq(
     new_freq: Annotated[float, Argument()] = None,
     *,
-    target: Annotated[object, Parameter(show=False)] = None,
+    target: Annotated[object, Parameter(parse=False)],
 ):
     """Get or set the frequency of the specified EQ cell.
 
@@ -114,7 +115,7 @@ def cell_freq(
 def cell_gain(
     new_gain: Annotated[float, Argument()] = None,
     *,
-    target: Annotated[object, Parameter(show=False)] = None,
+    target: Annotated[object, Parameter(parse=False)],
 ):
     """Get or set the gain of the specified EQ cell.
 
@@ -134,7 +135,7 @@ def cell_gain(
 def cell_q(
     new_q: Annotated[float, Argument()] = None,
     *,
-    target: Annotated[object, Parameter(show=False)] = None,
+    target: Annotated[object, Parameter(parse=False)],
 ):
     """Get or set the Q of the specified EQ cell.
 
@@ -154,7 +155,7 @@ def cell_q(
 def cell_type(
     new_type: Annotated[int, Argument()] = None,
     *,
-    target: Annotated[object, Parameter(show=False)] = None,
+    target: Annotated[object, Parameter(parse=False)],
 ):
     """Get or set the type of the specified EQ cell.
 

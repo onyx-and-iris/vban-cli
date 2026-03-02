@@ -16,19 +16,18 @@ app.command(gainlayer.app.meta, name='gainlayer')
 
 @app.meta.default
 def launcher(
-    index: Annotated[int, Argument()] = None,
+    index: Annotated[int, Argument()],
+    /,
     *tokens: Annotated[str, Parameter(show=False, allow_leading_hyphen=True)],
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Control the strip parameters."""
     additional_kwargs = {}
     command, bound, _ = app.parse_args(tokens)
     if tokens[0] == 'eq':
         additional_kwargs['eq_kind'] = app.name[0]
-    if index is not None:
-        additional_kwargs['index'] = index
-    if ctx is not None:
-        additional_kwargs['ctx'] = ctx
+    additional_kwargs['index'] = index
+    additional_kwargs['ctx'] = ctx
 
     return command(*bound.args, **bound.kwargs, **additional_kwargs)
 
@@ -37,8 +36,8 @@ def launcher(
 def mono(
     new_state: Annotated[Optional[bool], Argument()] = None,
     *,
-    index: Annotated[int, Parameter(show=False)] = None,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    index: Annotated[int, Parameter(parse=False)],
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Get or set the mono state of the specified strip.
 
@@ -57,8 +56,8 @@ def mono(
 def solo(
     new_state: Annotated[Optional[bool], Argument()] = None,
     *,
-    index: Annotated[int, Parameter(show=False)] = None,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    index: Annotated[int, Parameter(parse=False)],
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Get or set the solo state of the specified strip.
 
@@ -77,8 +76,8 @@ def solo(
 def mute(
     new_state: Annotated[Optional[bool], Argument()] = None,
     *,
-    index: Annotated[int, Parameter(show=False)] = None,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    index: Annotated[int, Parameter(parse=False)],
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Get or set the mute state of the specified strip.
 
@@ -97,8 +96,8 @@ def mute(
 def gain(
     new_value: Annotated[Optional[float], Argument()] = None,
     *,
-    index: Annotated[int, Parameter(show=False)] = None,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    index: Annotated[int, Parameter(parse=False)],
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Get or set the gain of the specified strip.
 
@@ -117,8 +116,8 @@ def gain(
 def a1(
     new_value: Annotated[Optional[bool], Argument()] = None,
     *,
-    index: Annotated[int, Parameter(show=False)] = None,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    index: Annotated[int, Parameter(parse=False)],
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Get or set the A1 state of the specified strip.
 
@@ -137,8 +136,8 @@ def a1(
 def a2(
     new_value: Annotated[Optional[bool], Argument()] = None,
     *,
-    index: Annotated[int, Parameter(show=False)] = None,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    index: Annotated[int, Parameter(parse=False)],
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Get or set the A2 state of the specified strip.
 
@@ -157,8 +156,8 @@ def a2(
 def a3(
     new_value: Annotated[Optional[bool], Argument()] = None,
     *,
-    index: Annotated[int, Parameter(show=False)] = None,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    index: Annotated[int, Parameter(parse=False)],
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Get or set the A3 state of the specified strip.
 
@@ -177,8 +176,8 @@ def a3(
 def a4(
     new_value: Annotated[Optional[bool], Argument()] = None,
     *,
-    index: Annotated[int, Parameter(show=False)] = None,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    index: Annotated[int, Parameter(parse=False)],
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Get or set the A4 state of the specified strip.
 
@@ -197,8 +196,8 @@ def a4(
 def a5(
     new_value: Annotated[Optional[bool], Argument()] = None,
     *,
-    index: Annotated[int, Parameter(show=False)] = None,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    index: Annotated[int, Parameter(parse=False)],
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Get or set the A5 state of the specified strip.
 
@@ -217,8 +216,8 @@ def a5(
 def b1(
     new_value: Annotated[Optional[bool], Argument()] = None,
     *,
-    index: Annotated[int, Parameter(show=False)] = None,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    index: Annotated[int, Parameter(parse=False)],
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Get or set the B1 state of the specified strip.
 
@@ -237,8 +236,8 @@ def b1(
 def b2(
     new_value: Annotated[Optional[bool], Argument()] = None,
     *,
-    index: Annotated[int, Parameter(show=False)] = None,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    index: Annotated[int, Parameter(parse=False)],
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Get or set the B2 state of the specified strip.
 
@@ -257,8 +256,8 @@ def b2(
 def b3(
     new_value: Annotated[Optional[bool], Argument()] = None,
     *,
-    index: Annotated[int, Parameter(show=False)] = None,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    index: Annotated[int, Parameter(parse=False)],
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Get or set the B3 state of the specified strip.
 

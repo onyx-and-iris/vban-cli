@@ -11,21 +11,18 @@ app = App(name='gainlayer', help_formatter=GainlayerHelpFormatter())
 
 @app.meta.default
 def launcher(
-    gainlayer_index: Annotated[int, Argument()] = None,
+    gainlayer_index: Annotated[int, Argument()],
+    /,
     *tokens: Annotated[str, Parameter(show=False, allow_leading_hyphen=True)],
-    index: Annotated[int, Argument()] = None,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    index: Annotated[int, Parameter(parse=False)],
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Control the gainlayers."""
     additional_kwargs = {}
     command, bound, _ = app.parse_args(tokens)
-    if index is not None and gainlayer_index is not None:
-        additional_kwargs['strip_index'] = index
-        additional_kwargs['gainlayer_index'] = gainlayer_index
-    else:
-        raise ValueError('Both gainlayer_index and index must be provided.')
-    if ctx is not None:
-        additional_kwargs['ctx'] = ctx
+    additional_kwargs['strip_index'] = index
+    additional_kwargs['gainlayer_index'] = gainlayer_index
+    additional_kwargs['ctx'] = ctx
 
     return command(*bound.args, **bound.kwargs, **additional_kwargs)
 
@@ -34,9 +31,9 @@ def launcher(
 def level(
     new_level: Annotated[float, Argument()] = None,
     *,
-    strip_index: Annotated[int, Parameter(show=False)] = None,
-    gainlayer_index: Annotated[int, Parameter(show=False)] = None,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    strip_index: Annotated[int, Parameter(parse=False)],
+    gainlayer_index: Annotated[int, Parameter(parse=False)],
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Get or set the level of the specified gainlayer.
 

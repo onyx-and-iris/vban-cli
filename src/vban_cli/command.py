@@ -12,7 +12,7 @@ app = App(name='command', help_formatter=BaseHelpFormatter())
 @app.command(name='show')
 def show(
     *,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    ctx: Annotated[Context, Parameter(parse=False)] = None,
 ):
     """Bring the Voicemeeter GUI to the foreground."""
     ctx.client.command.show()
@@ -22,7 +22,7 @@ def show(
 @app.command(name='hide')
 def hide(
     *,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Send the Voicemeeter GUI to the background."""
     ctx.client.command.hide()
@@ -32,7 +32,7 @@ def hide(
 @app.command(name='shutdown')
 def shutdown(
     *,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Shut down Voicemeeter."""
     ctx.client.command.shutdown()
@@ -42,7 +42,7 @@ def shutdown(
 @app.command(name='restart')
 def restart(
     *,
-    ctx: Annotated[Context, Parameter(show=False)] = None,
+    ctx: Annotated[Context, Parameter(parse=False)],
 ):
     """Restart the Voicemeeter engine."""
     ctx.client.command.restart()
