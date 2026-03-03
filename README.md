@@ -119,6 +119,18 @@ vban-cli strip 5 gate hold 2088.7
 
 see `vban-cli strip comp --help` for more info.
 
+##### Strip Denoiser Command
+
+*Usage: vban-cli strip \<index> denoiser COMMAND [OPTIONS]*
+
+examples:
+
+```console
+vban-cli strip 4 denoiser knob 3.6
+```
+
+see `vban-cli strip denoiser --help` for more info.
+
 ##### Strip Gainlayer Command
 
 *Usage: vban-cli strip \<index> gainlayer \<gainlayer_index> COMMAND [OPTIONS] [ARGS]*
