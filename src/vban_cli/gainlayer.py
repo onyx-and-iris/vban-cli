@@ -1,4 +1,4 @@
-from typing import Annotated
+from typing import Annotated, Optional
 
 from cyclopts import App, Argument, Parameter
 
@@ -28,7 +28,7 @@ def launcher(
 
 @app.command(name='level')
 def level(
-    new_level: Annotated[float, Argument()] = None,
+    new_level: Annotated[Optional[float], Argument()] = None,
     *,
     strip_index: Annotated[int, Parameter(parse=False)],
     gainlayer_index: Annotated[int, Parameter(parse=False)],
@@ -38,7 +38,7 @@ def level(
 
     Parameters
     ----------
-    new_level : float
+    new_level : float, optional
         If provided, sets the level to this value. If not provided, the current level is printed.
     """
     if new_level is None:

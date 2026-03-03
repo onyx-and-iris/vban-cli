@@ -1,4 +1,4 @@
-from typing import Annotated
+from typing import Annotated, Optional
 
 from cyclopts import App, Argument, Parameter
 
@@ -35,7 +35,7 @@ def launcher(
 
 @app.command(name='on')
 def on(
-    new_state: Annotated[bool, Argument()] = None,
+    new_state: Annotated[Optional[bool], Argument()] = None,
     *,
     target: Annotated[object, Parameter(parse=False)],
 ):
@@ -43,7 +43,7 @@ def on(
 
     Parameters
     ----------
-    new_state : bool
+    new_state : bool, optional
         If provided, sets the on state to this value. If not provided, the current on state is printed.
     """
     if new_state is None:
@@ -73,7 +73,7 @@ def cell_launcher(
 
 @cell_app.command(name='on')
 def cell_on(
-    new_state: Annotated[bool, Argument()] = None,
+    new_state: Annotated[Optional[bool], Argument()] = None,
     *,
     target: Annotated[object, Parameter(parse=False)],
 ):
@@ -81,7 +81,7 @@ def cell_on(
 
     Parameters
     ----------
-    new_state : bool
+    new_state : bool, optional
         If provided, sets the on state to this value. If not provided, the current on state is printed.
     """
     if new_state is None:
@@ -93,7 +93,7 @@ def cell_on(
 
 @cell_app.command(name='freq')
 def cell_freq(
-    new_freq: Annotated[float, Argument()] = None,
+    new_freq: Annotated[Optional[float], Argument()] = None,
     *,
     target: Annotated[object, Parameter(parse=False)],
 ):
@@ -101,7 +101,7 @@ def cell_freq(
 
     Parameters
     ----------
-    new_freq : float
+    new_freq : float, optional
         If provided, sets the frequency to this value. If not provided, the current frequency is printed.
     """
     if new_freq is None:
@@ -113,7 +113,7 @@ def cell_freq(
 
 @cell_app.command(name='gain')
 def cell_gain(
-    new_gain: Annotated[float, Argument()] = None,
+    new_gain: Annotated[Optional[float], Argument()] = None,
     *,
     target: Annotated[object, Parameter(parse=False)],
 ):
@@ -121,7 +121,7 @@ def cell_gain(
 
     Parameters
     ----------
-    new_gain : float
+    new_gain : float, optional
         If provided, sets the gain to this value. If not provided, the current gain is printed.
     """
     if new_gain is None:
@@ -133,7 +133,7 @@ def cell_gain(
 
 @cell_app.command(name='quality')
 def cell_q(
-    new_q: Annotated[float, Argument()] = None,
+    new_q: Annotated[Optional[float], Argument()] = None,
     *,
     target: Annotated[object, Parameter(parse=False)],
 ):
@@ -141,7 +141,7 @@ def cell_q(
 
     Parameters
     ----------
-    new_q : float
+    new_q : float, optional
         If provided, sets the Q to this value. If not provided, the current Q is printed.
     """
     if new_q is None:
@@ -153,7 +153,7 @@ def cell_q(
 
 @cell_app.command(name='type')
 def cell_type(
-    new_type: Annotated[int, Argument()] = None,
+    new_type: Annotated[Optional[int], Argument()] = None,
     *,
     target: Annotated[object, Parameter(parse=False)],
 ):
@@ -161,7 +161,7 @@ def cell_type(
 
     Parameters
     ----------
-    new_type : int
+    new_type : int, optional
         If provided, sets the type to this value. If not provided, the current type is printed.
     """
     if new_type is None:

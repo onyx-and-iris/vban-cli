@@ -1,4 +1,4 @@
-from typing import Annotated
+from typing import Annotated, Optional
 
 from cyclopts import App, Argument, Parameter
 
@@ -10,7 +10,7 @@ app = App(name='denoiser', help_formatter=StripHelpFormatter())
 
 @app.command(name='knob')
 def knob(
-    new_knob: Annotated[float, Argument()] = None,
+    new_knob: Annotated[Optional[float], Argument()] = None,
     *,
     index: Annotated[int, Parameter(parse=False)],
     ctx: Annotated[Context, Parameter(parse=False)],
@@ -19,7 +19,7 @@ def knob(
 
     Parameters
     ----------
-    new_knob : int, optional
+    new_knob : float, optional
         If provided, sets the knob to this value. If not provided, the current knob is printed.
     """
     if new_knob is None:

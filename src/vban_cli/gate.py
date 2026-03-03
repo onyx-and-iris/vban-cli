@@ -1,4 +1,4 @@
-from typing import Annotated
+from typing import Annotated, Optional
 
 from cyclopts import App, Argument, Parameter
 
@@ -10,7 +10,7 @@ app = App(name='gate', help_formatter=StripHelpFormatter())
 
 @app.command(name='knob')
 def knob(
-    new_knob: Annotated[float, Argument()] = None,
+    new_knob: Annotated[Optional[float], Argument()] = None,
     *,
     index: Annotated[int, Parameter(parse=False)],
     ctx: Annotated[Context, Parameter(parse=False)],
@@ -19,7 +19,7 @@ def knob(
 
     Parameters
     ----------
-    new_knob : int, optional
+    new_knob : float, optional
         If provided, sets the knob to this value. If not provided, the current knob is printed.
     """
     if new_knob is None:
@@ -31,7 +31,7 @@ def knob(
 
 @app.command(name='threshold')
 def threshold(
-    new_threshold: Annotated[float, Argument()] = None,
+    new_threshold: Annotated[Optional[float], Argument()] = None,
     *,
     index: Annotated[int, Parameter(parse=False)],
     ctx: Annotated[Context, Parameter(parse=False)],
@@ -52,7 +52,7 @@ def threshold(
 
 @app.command(name='damping-max')
 def damping_max(
-    new_damping_max: Annotated[float, Argument()] = None,
+    new_damping_max: Annotated[Optional[float], Argument()] = None,
     *,
     index: Annotated[int, Parameter(parse=False)],
     ctx: Annotated[Context, Parameter(parse=False)],
@@ -73,7 +73,7 @@ def damping_max(
 
 @app.command(name='bp-sidechain')
 def bp_sidechain(
-    new_bp_sidechain: Annotated[float, Argument()] = None,
+    new_bp_sidechain: Annotated[Optional[float], Argument()] = None,
     *,
     index: Annotated[int, Parameter(parse=False)],
     ctx: Annotated[Context, Parameter(parse=False)],
@@ -94,7 +94,7 @@ def bp_sidechain(
 
 @app.command(name='attack')
 def attack(
-    new_attack: Annotated[float, Argument()] = None,
+    new_attack: Annotated[Optional[float], Argument()] = None,
     *,
     index: Annotated[int, Parameter(parse=False)],
     ctx: Annotated[Context, Parameter(parse=False)],
@@ -115,7 +115,7 @@ def attack(
 
 @app.command(name='hold')
 def hold(
-    new_hold: Annotated[float, Argument()] = None,
+    new_hold: Annotated[Optional[float], Argument()] = None,
     *,
     index: Annotated[int, Parameter(parse=False)],
     ctx: Annotated[Context, Parameter(parse=False)],
@@ -136,7 +136,7 @@ def hold(
 
 @app.command(name='release')
 def release(
-    new_release: Annotated[float, Argument()] = None,
+    new_release: Annotated[Optional[float], Argument()] = None,
     *,
     index: Annotated[int, Parameter(parse=False)],
     ctx: Annotated[Context, Parameter(parse=False)],

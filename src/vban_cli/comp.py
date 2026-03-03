@@ -1,4 +1,4 @@
-from typing import Annotated
+from typing import Annotated, Optional
 
 from cyclopts import App, Argument, Parameter
 
@@ -10,7 +10,7 @@ app = App(name='comp', help_formatter=StripHelpFormatter())
 
 @app.command(name='knob')
 def knob(
-    new_knob: Annotated[float, Argument()] = None,
+    new_knob: Annotated[Optional[float], Argument()] = None,
     *,
     index: Annotated[int, Parameter(parse=False)],
     ctx: Annotated[Context, Parameter(parse=False)],
@@ -19,7 +19,7 @@ def knob(
 
     Parameters
     ----------
-    new_knob : int, optional
+    new_knob : float, optional
         If provided, sets the knob to this value. If not provided, the current knob is printed.
     """
     if new_knob is None:
@@ -31,7 +31,7 @@ def knob(
 
 @app.command(name='input-gain')
 def input_gain(
-    new_gain: Annotated[float, Argument()] = None,
+    new_gain: Annotated[Optional[float], Argument()] = None,
     *,
     index: Annotated[int, Parameter(parse=False)],
     ctx: Annotated[Context, Parameter(parse=False)],
@@ -52,7 +52,7 @@ def input_gain(
 
 @app.command(name='ratio')
 def ratio(
-    new_ratio: Annotated[float, Argument()] = None,
+    new_ratio: Annotated[Optional[float], Argument()] = None,
     *,
     index: Annotated[int, Parameter(parse=False)],
     ctx: Annotated[Context, Parameter(parse=False)],
@@ -73,7 +73,7 @@ def ratio(
 
 @app.command(name='threshold')
 def threshold(
-    new_threshold: Annotated[float, Argument()] = None,
+    new_threshold: Annotated[Optional[float], Argument()] = None,
     *,
     index: Annotated[int, Parameter(parse=False)],
     ctx: Annotated[Context, Parameter(parse=False)],
@@ -94,7 +94,7 @@ def threshold(
 
 @app.command(name='attack')
 def attack(
-    new_attack: Annotated[float, Argument()] = None,
+    new_attack: Annotated[Optional[float], Argument()] = None,
     *,
     index: Annotated[int, Parameter(parse=False)],
     ctx: Annotated[Context, Parameter(parse=False)],
@@ -115,7 +115,7 @@ def attack(
 
 @app.command(name='release')
 def release(
-    new_release: Annotated[float, Argument()] = None,
+    new_release: Annotated[Optional[float], Argument()] = None,
     *,
     index: Annotated[int, Parameter(parse=False)],
     ctx: Annotated[Context, Parameter(parse=False)],
@@ -136,7 +136,7 @@ def release(
 
 @app.command(name='knee')
 def knee(
-    new_knee: Annotated[float, Argument()] = None,
+    new_knee: Annotated[Optional[float], Argument()] = None,
     *,
     index: Annotated[int, Parameter(parse=False)],
     ctx: Annotated[Context, Parameter(parse=False)],
@@ -157,7 +157,7 @@ def knee(
 
 @app.command(name='output-gain')
 def output_gain(
-    new_gain: Annotated[float, Argument()] = None,
+    new_gain: Annotated[Optional[float], Argument()] = None,
     *,
     index: Annotated[int, Parameter(parse=False)],
     ctx: Annotated[Context, Parameter(parse=False)],
@@ -178,7 +178,7 @@ def output_gain(
 
 @app.command(name='auto-makeup')
 def makeup(
-    new_makeup: Annotated[bool, Argument()] = None,
+    new_makeup: Annotated[Optional[bool], Argument()] = None,
     *,
     index: Annotated[int, Parameter(parse=False)],
     ctx: Annotated[Context, Parameter(parse=False)],
