@@ -8,21 +8,6 @@ from .help import StripHelpFormatter
 app = App(name='gate', help_formatter=StripHelpFormatter())
 
 
-@app.meta.default
-def launcher(
-    *tokens: Annotated[str, Parameter(show=False, allow_leading_hyphen=True)],
-    index: Annotated[int, Parameter(parse=False)],
-    ctx: Annotated[Context, Parameter(parse=False)],
-):
-    """Control the compressor parameters."""
-    additional_kwargs = {}
-    command, bound, _ = app.parse_args(tokens)
-    additional_kwargs['index'] = index
-    additional_kwargs['ctx'] = ctx
-
-    return command(*bound.args, **bound.kwargs, **additional_kwargs)
-
-
 @app.command(name='knob')
 def knob(
     new_knob: Annotated[float, Argument()] = None,

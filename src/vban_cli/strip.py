@@ -8,9 +8,9 @@ from .help import StripHelpFormatter
 
 app = App(name='strip', help_formatter=StripHelpFormatter())
 app.command(eq.app.meta, name='eq')
-app.command(comp.app.meta, name='comp')
-app.command(gate.app.meta, name='gate')
-app.command(denoiser.app.meta, name='denoiser')
+app.command(comp.app, name='comp')
+app.command(gate.app, name='gate')
+app.command(denoiser.app, name='denoiser')
 app.command(gainlayer.app.meta, name='gainlayer')
 
 
