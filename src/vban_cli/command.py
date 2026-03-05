@@ -50,3 +50,23 @@ def restart(
     """Restart the Voicemeeter engine."""
     ctx.client.command.restart()
     app.console.print('Voicemeeter engine should now be restarting.')
+
+
+@app.command(name='lock')
+def lock(
+    *,
+    ctx: Annotated[Context, Parameter(parse=False)],
+):
+    """Lock the Voicemeeter GUI."""
+    ctx.client.command.lock = True
+    app.console.print('Voicemeeter GUI should now be locked.')
+
+
+@app.command(name='unlock')
+def unlock(
+    *,
+    ctx: Annotated[Context, Parameter(parse=False)],
+):
+    """Unlock the Voicemeeter GUI."""
+    ctx.client.command.lock = False
+    app.console.print('Voicemeeter GUI should now be unlocked.')
