@@ -270,3 +270,23 @@ def b3(
         app.console.print(ctx.client.strip[index].B3)
         return
     ctx.client.strip[index].B3 = new_value
+
+
+@app.command(name='label')
+def label(
+    new_value: Annotated[Optional[str], Argument()] = None,
+    *,
+    index: Annotated[int, Parameter(parse=False)],
+    ctx: Annotated[Context, Parameter(parse=False)],
+):
+    """Get or set the label of the specified strip.
+
+    Parameters
+    ----------
+    new_value : str, optional
+        If provided, sets the label to this value. If not provided, the current label is printed.
+    """
+    if new_value is None:
+        app.console.print(ctx.client.strip[index].label)
+        return
+    ctx.client.strip[index].label = new_value
