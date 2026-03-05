@@ -5,7 +5,11 @@ from cyclopts import App, Argument, Parameter
 from .context import Context
 from .help import StripHelpFormatter
 
-app = App(name='comp', help_formatter=StripHelpFormatter())
+app = App(
+    name='comp',
+    help='Control the compressor settings',
+    help_formatter=StripHelpFormatter(),
+)
 
 
 @app.command(name='knob')

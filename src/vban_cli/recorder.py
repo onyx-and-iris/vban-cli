@@ -7,7 +7,11 @@ from . import validation
 from .context import Context
 from .help import BaseHelpFormatter
 
-app = App(name='recorder', help_formatter=BaseHelpFormatter())
+app = App(
+    name='recorder',
+    help='Control the recorder playback and recording',
+    help_formatter=BaseHelpFormatter(),
+)
 
 
 @app.command(name='play')

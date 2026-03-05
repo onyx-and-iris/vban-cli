@@ -5,7 +5,11 @@ from cyclopts import App, Parameter
 from .context import Context
 from .help import BaseHelpFormatter
 
-app = App(name='command', help_formatter=BaseHelpFormatter())
+app = App(
+    name='command',
+    help='Execute commands that perform actions',
+    help_formatter=BaseHelpFormatter(),
+)
 
 
 @app.command(name='show')
