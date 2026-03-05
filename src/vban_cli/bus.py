@@ -106,3 +106,43 @@ def mode(
         app.console.print(ctx.client.bus[index].mode.get())
         return
     setattr(ctx.client.bus[index].mode, type_, True)
+
+
+@app.command(name='gain')
+def gain(
+    new_value: Annotated[Optional[float], Argument()] = None,
+    *,
+    index: Annotated[int, Parameter(parse=False)],
+    ctx: Annotated[Context, Parameter(parse=False)],
+):
+    """Get or set the gain of the specified bus.
+
+    Parameters
+    ----------
+    new_value : float, optional
+        If provided, sets the gain to this value. If not provided, the current gain is printed.
+    """
+    if new_value is None:
+        app.console.print(ctx.client.bus[index].gain)
+        return
+    ctx.client.bus[index].gain = new_value
+
+
+@app.command(name='label')
+def label(
+    new_value: Annotated[Optional[str], Argument()] = None,
+    *,
+    index: Annotated[int, Parameter(parse=False)],
+    ctx: Annotated[Context, Parameter(parse=False)],
+):
+    """Get or set the label of the specified bus.
+
+    Parameters
+    ----------
+    new_value : str, optional
+        If provided, sets the label to this value. If not provided, the current label is printed.
+    """
+    if new_value is None:
+        app.console.print(ctx.client.bus[index].label)
+        return
+    ctx.client.bus[index].label = new_value
