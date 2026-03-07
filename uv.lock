@@ -141,7 +141,7 @@ requires-dist = [
 
 [[package]]
 name = "vban-cmd"
-version = "2.9.6"
+version = "2.9.7"
 source = { editable = "../vban-cmd-python" }
 
 [package.metadata]
