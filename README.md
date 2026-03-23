@@ -5,7 +5,16 @@
 
 ---
 
-## Install
+## Table of Contents
+
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Use](#use)
+- [Shell Completion](#shell-completion)
+- [License](#license)
+
+
+## Installation
 
 #### With uv
 
@@ -211,6 +220,14 @@ vban-cli sendtext 'Point(ASIO128.IN[1..4],ASIO128.OUT[1]).dBGain = -3.0'
 
 see `vban-cli sendtext --help` for more info.
 
+## Shell Completion
+
+Shell completion scripts are available for *bash*, *zsh*, and *fish*.
+
+```console
+vban-cli --install-completion
+```
+
 ---
 
 ## Implementation Notes
@@ -226,8 +243,6 @@ see `vban-cli sendtext --help` for more info.
 
 I've made the effort to set up the basic skeletal structure of the CLI as well as demonstrate how to combine subcommand groups with subcommand groups so more can be implemented, it just needs doing. There may be restrictions on some things however, for example, retrieving values is only possible for parameters [defined in the protocol](https://github.com/onyx-and-iris/Voicemeeter-SDK/blob/3be2c1c36563afbd6df3da8436406c77d2cc1f10/VoicemeeterRemote.h#L787). Setting parameters can be done for anything possible by a string request.
 
-Shell completion scripts are available (for zsh, bash and fish) but they haven't been thoroughly tested.
-
 If there's something missing that you would like to see added the best bet is to submit a PR. You may raise an issue and if it's quick and simple to do I may (or may not) do it.
 
 ---
@@ -235,7 +250,7 @@ If there's something missing that you would like to see added the best bet is to
 ## License
 
 `vban-cli` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
- 
+
 
 
 [ident-0]: https://github.com/onyx-and-iris/Voicemeeter-SDK/blob/3be2c1c36563afbd6df3da8436406c77d2cc1f10/VoicemeeterRemote.h#L896
