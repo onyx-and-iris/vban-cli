@@ -1,6 +1,6 @@
 [project]
 name = "vban-cli"
-version = "0.12.6"
+version = "0.12.7"
 description = "A command-line interface for Voicemeeter leveraging VBAN."
 readme = "README.md"
 license = { text = "LICENSE" }
@@ -20,8 +20,9 @@ classifiers = [
 [project.scripts]
 vban-cli = "vban_cli.app:run"
 
-[tool.uv]
-package = true
+[build-system]
+requires = ["uv_build>=0.10.9,<0.11.0"]
+build-backend = "uv_build"
 
 [tool.uv.sources]
 vban-cmd = { path = "../vban-cmd-python", editable = true }

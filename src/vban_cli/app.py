@@ -42,13 +42,15 @@ def launcher(
     *tokens: Annotated[str, Parameter(show=False, allow_leading_hyphen=True)],
     vban_config: Annotated[VBANConfig, Parameter()] = VBANConfig(),
 ):
+    """A command-line interface for Voicemeeter/Matrix over VBAN."""
     command, bound, _ = app.parse_args(tokens)
-    if tokens[0] == '--install-completion':
-        return command(*bound.args, **bound.kwargs)
 
     disable_rt_listeners = False
-    if command.__name__ == 'sendtext':
-        disable_rt_listeners = True
+    match command.__name__:
+        case '_install_completion_command':
+            return command(*bound.args, **bound.kwargs)
+        case 'sendtext':
+            disable_rt_listeners = True
 
     try:
         with vban_cmd.api(
